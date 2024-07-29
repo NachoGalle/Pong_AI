@@ -54,8 +54,6 @@ class PongGame:
     def train_ai(self,genome1,genome2,config):
         net1 = neat.nn.FeedForwardNetwork.create(genome1,config)
         net2 = neat.nn.FeedForwardNetwork.create(genome2,config)
-
-        
         
         run = True
         while run:
@@ -142,6 +140,6 @@ if __name__ == "__main__":
     config = neat.Config(neat.DefaultGenome,neat.DefaultReproduction,
                          neat.DefaultSpeciesSet,neat.DefaultStagnation,config_path)
 
-    run_neat(config)
+    #run_neat(config)
     #input("test neural network")
-    #test_ai(config)
+    test_ai(config)
