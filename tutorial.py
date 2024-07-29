@@ -55,29 +55,31 @@ class PongGame:
         net1 = neat.nn.FeedForwardNetwork.create(genome1,config)
         net2 = neat.nn.FeedForwardNetwork.create(genome2,config)
 
-        output1= net1.activate((self.left_paddle.y,self.ball.y,abs(self.left_paddle.x-self.ball.x)))
-        decision1 = output1.index(max(output1))
-        if decision1 == 0:
-            pass
-        elif decision1 == 1:
-            self.game.move_paddle(left=True,up=True)
-        else:
-            self.game.move_paddle(left=True,up=False)
-
-        output2= net2.activate((self.right_paddle.y,self.ball.y,abs(self.right_paddle.x-self.ball.x)))
-        decision2 = output2.index(max(output2))
-        if decision2 == 0:
-            pass
-        elif decision2 == 1:
-            self.game.move_paddle(left=False,up=True)
-        else:
-            self.game.move_paddle(left=False,up=False)
+        
         
         run = True
         while run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     quit()         
+
+            output1= net1.activate((self.left_paddle.y,self.ball.y,abs(self.left_paddle.x-self.ball.x)))
+            decision1 = output1.index(max(output1))
+            if decision1 == 0:
+                pass
+            elif decision1 == 1:
+                self.game.move_paddle(left=True,up=True)
+            else:
+                self.game.move_paddle(left=True,up=False)
+
+            output2= net2.activate((self.right_paddle.y,self.ball.y,abs(self.right_paddle.x-self.ball.x)))
+            decision2 = output2.index(max(output2))
+            if decision2 == 0:
+                pass
+            elif decision2 == 1:
+                self.game.move_paddle(left=False,up=True)
+            else:
+                self.game.move_paddle(left=False,up=False)
 
             game_info = self.game.loop()
             self.game.draw(draw_hits=True)
@@ -140,6 +142,6 @@ if __name__ == "__main__":
     config = neat.Config(neat.DefaultGenome,neat.DefaultReproduction,
                          neat.DefaultSpeciesSet,neat.DefaultStagnation,config_path)
 
-    #run_neat(config)
+    run_neat(config)
     #input("test neural network")
-    test_ai(config)
+    #test_ai(config)
