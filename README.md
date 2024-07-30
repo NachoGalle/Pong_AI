@@ -1,2 +1,4 @@
 # Pong_AI
-Classic game of Pong (2 players) while programming an AI that learns how to play
+pong_game.py is the classic pong game for two players
+
+main.py is pong against an AI trained using the NEAT algorithm.
